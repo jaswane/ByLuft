@@ -35,7 +35,7 @@ export function AirQualityCard({
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <p className="text-sm font-medium text-muted">
-              Luftkvalitet i {city.name}
+              Luftkvalitetsvarsel for {city.name}
             </p>
             <h2
               id="status-heading"
@@ -47,9 +47,6 @@ export function AirQualityCard({
             </h2>
             <p className="mt-1 text-sm text-muted">{info.riskShort}</p>
           </div>
-          {hasData && result.overallLevel && (
-            <AqiBadge level={result.overallLevel} />
-          )}
         </div>
 
         <p className="mt-4 max-w-prose text-sm text-foreground/90">
@@ -92,16 +89,12 @@ export function AirQualityCard({
               {updated && (
                 <div className="flex gap-2">
                   <dt className="font-medium text-foreground">
-                    Sist oppdatert:
+                    Varsel oppdatert:
                   </dt>
                   <dd>{updated}</dd>
                 </div>
               )}
             </dl>
-            <p className="mt-3 text-xs text-muted">
-              Dette er et beregnet varsel, ikke en måling på ditt eksakte sted.
-              Luftkvaliteten kan variere lokalt innen samme by.
-            </p>
           </>
         ) : (
           <div className="rounded-lg border border-dashed border-border bg-background p-5">
@@ -116,6 +109,13 @@ export function AirQualityCard({
             </p>
           </div>
         )}
+
+        <p className="mt-4 border-t border-border pt-3 text-sm text-muted">
+          Dette er et beregnet varsel fra MET Norway, ikke en måling på ditt
+          eksakte sted. Luftkvaliteten kan variere lokalt innen samme by – for
+          eksempel er lufta ofte dårligere rett ved en trafikkert vei enn i en
+          park.
+        </p>
       </div>
     </section>
   );

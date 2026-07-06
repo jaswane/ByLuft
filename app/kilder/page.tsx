@@ -82,10 +82,18 @@ export default function KilderPage() {
           <Prose>
             <h2>Slik bruker vi dataene</h2>
             <p>
-              Bysidene viser beregnet luftkvalitetsvarsel fra MET Norway. Vi henter
+              Det eneste vi henter automatisk, er det beregnede
+              luftkvalitetsvarselet fra MET Norway som vises på bysidene. Vi henter
               dataene på serveren vår med en identifiserende User-Agent, i tråd med
               MET sine retningslinjer, og mellomlagrer svarene en periode slik at vi
               ikke belaster de offentlige tjenestene unødig.
+            </p>
+            <p>
+              Fra Miljødirektoratet henter vi i denne versjonen ingen data – vi
+              lenker til tjenesten deres for faktiske målinger og offisielle råd.
+              Helseinnholdet på ByLuft.no er vår egen forklarende tekst, skrevet med
+              FHI og Helsenorge som kilder. Det er generell informasjon, ikke
+              medisinske råd.
             </p>
 
             <h2>Begrensninger</h2>

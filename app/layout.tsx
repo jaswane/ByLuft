@@ -8,10 +8,9 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: {
-    default: `${site.name} – Luftkvalitet i norske byer`,
-    template: `%s | ${site.name}`,
-  },
+  // NB: ingen title.template her – pageMetadata() i lib/seo.ts setter komplette
+  // titler selv. En template i tillegg ga dobbel «| ByLuft.no»-suffiks.
+  title: `${site.name} – Luftkvalitet i norske byer`,
   description: site.description,
   applicationName: site.name,
   authors: [{ name: site.publisher, url: site.publisherUrl }],

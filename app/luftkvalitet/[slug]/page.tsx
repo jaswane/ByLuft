@@ -69,9 +69,9 @@ export default async function CityPage({
 
   const faq: FaqItem[] = [
     {
-      question: `Hvordan er luftkvaliteten i ${city.name} akkurat nå?`,
+      question: `Hvordan er luftkvaliteten i ${city.name} i dag?`,
       answer:
-        `Statuskortet øverst viser det nyeste beregnede luftkvalitetsvarselet for ${city.name} fra MET Norway, med samlet nivå og de viktigste komponentene. ` +
+        `Statuskortet øverst viser det nyeste beregnede luftkvalitetsvarselet for ${city.name} fra MET Norway, med samlet nivå og de viktigste komponentene. Dette er et varsel, ikke en direktemåling. ` +
         `Er data utilgjengelig, sier vi tydelig fra i stedet for å vise gjettede tall.`,
     },
     {

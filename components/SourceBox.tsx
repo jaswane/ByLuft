@@ -58,7 +58,7 @@ export function SourceBox({
         ))}
       </ul>
       {updated && (
-        <p className="mt-3 text-xs text-muted">Data sist forsøkt oppdatert: {updated}</p>
+        <p className="mt-3 text-xs text-muted">Sist oppdatert fra MET: {updated}</p>
       )}
     </section>
   );

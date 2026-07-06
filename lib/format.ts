@@ -1,24 +1,30 @@
-/** Formateringshjelpere for norsk visning. */
+/**
+ * Formateringshjelpere for norsk visning.
+ * Tidssonen pinnes til Europe/Oslo slik at tidsstempler vises i norsk tid
+ * uavhengig av hvilken tidssone serveren kjører i (f.eks. UTC i produksjon).
+ */
 
 const dateTimeFmt = new Intl.DateTimeFormat("nb-NO", {
   day: "numeric",
   month: "long",
   hour: "2-digit",
   minute: "2-digit",
+  timeZone: "Europe/Oslo",
 });
 
 const dateFmt = new Intl.DateTimeFormat("nb-NO", {
   day: "numeric",
   month: "long",
   year: "numeric",
+  timeZone: "Europe/Oslo",
 });
 
-/** "6. juli kl. 14:00" – tåler null/ugyldig og returnerer da null. */
+/** "6. juli kl. 14:00" (norsk tid) – tåler null/ugyldig og returnerer da null. */
 export function formatDateTime(iso: string | null): string | null {
   if (!iso) return null;
   const t = Date.parse(iso);
   if (Number.isNaN(t)) return null;
-  return dateTimeFmt.format(new Date(t)).replace(",", " kl.");
+  return dateTimeFmt.format(new Date(t));
 }
 
 export function formatDate(iso: string | null): string | null {

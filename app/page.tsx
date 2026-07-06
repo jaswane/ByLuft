@@ -18,9 +18,9 @@ export const metadata: Metadata = pageMetadata({
 
 const faq: FaqItem[] = [
   {
-    question: "Hvordan er lufta i byen min akkurat nå?",
+    question: "Hvordan er lufta i byen min i dag?",
     answer:
-      "Søk opp byen din øverst på siden, eller velg den i bylisten. På bysiden viser vi et beregnet luftkvalitetsvarsel fra MET Norway med samlet nivå og de viktigste komponentene, sammen med tidspunktet varselet gjelder for.",
+      "Søk opp byen din øverst på siden, eller velg den i bylisten. På bysiden viser vi et beregnet luftkvalitetsvarsel fra MET Norway med samlet nivå og de viktigste komponentene, sammen med tidspunktet varselet gjelder for. Det er et varsel, ikke en direktemåling.",
   },
   {
     question: "Hva er forskjellen på varsel og måling?",
@@ -138,6 +138,24 @@ export default function HomePage() {
                 </Link>
               </li>
             ))}
+          </ul>
+
+          <h3 className="mt-8 text-sm font-semibold text-muted">
+            Flere byer
+          </h3>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {citiesAlphabetical
+              .filter((c) => !c.featured)
+              .map((c) => (
+                <li key={c.slug}>
+                  <Link
+                    href={`/luftkvalitet/${c.slug}`}
+                    className="inline-block rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium transition-colors hover:border-accent hover:bg-accent-soft hover:text-accent-hover"
+                  >
+                    {c.name}
+                  </Link>
+                </li>
+              ))}
           </ul>
         </section>
       </Container>
