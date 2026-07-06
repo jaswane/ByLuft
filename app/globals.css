@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7fafc;
+  --surface: #ffffff;
+  --foreground: #0f172a;
+  --muted: #475569;
+  --border: #e2e8f0;
+  --accent: #0369a1;
+  --accent-hover: #075985;
+  --accent-soft: #e0f2fe;
+  --green: #15803d;
+  --green-soft: #dcfce7;
+
+  /* Luftkvalitetsnivåer (offisiell norsk 4-nivå skala) */
+  --level-1: #3f9f41;
+  --level-1-soft: #e7f6e7;
+  --level-2: #d9a400;
+  --level-2-soft: #fdf4d6;
+  --level-3: #d9412d;
+  --level-3-soft: #fbe3df;
+  --level-4: #8e1246;
+  --level-4-soft: #f6dde6;
+  --level-unknown: #64748b;
+  --level-unknown-soft: #eef2f6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-green: var(--green);
+  --color-green-soft: var(--green-soft);
+  --font-sans: var(--font-sans, ui-sans-serif, system-ui, -apple-system,
+      "Segoe UI", Roboto, Helvetica, Arial, sans-serif);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+}
+
+/* Fokusmarkering for tastaturnavigasjon */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.prose-byluft p {
+  line-height: 1.7;
+}
