@@ -26,6 +26,8 @@ export interface AirQualityResult {
   reftime: string | null;
   /** Navn på nærmeste lokasjon MET returnerte. */
   locationName: string | null;
+  /** Full stedssti fra MET, f.eks. "Oslo/Oslo/Sentrum 2". */
+  locationPath: string | null;
   components: ComponentReading[];
   /** Kilde-etikett for visning. */
   source: string;

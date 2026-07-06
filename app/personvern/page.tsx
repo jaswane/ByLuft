@@ -41,9 +41,19 @@ export default function PersonvernPage() {
           <h2>Data vi henter</h2>
           <p>
             For å vise luftkvalitet henter nettstedet data fra offentlige API-er,
-            blant annet MET Norway. Denne henten skjer på serveren vår, ikke i
+            blant annet MET Norway. Denne hentingen skjer på serveren vår, ikke i
             nettleseren din, og innebærer ikke at det sendes personopplysninger om
             deg til disse tjenestene.
+          </p>
+
+          <h2>«Min lokasjon»</h2>
+          <p>
+            Hvis du selv trykker på «Min lokasjon», spør nettleseren om lov til å
+            dele posisjonen din. Sier du ja, brukes koordinatene til ett oppslag:
+            å hente et beregnet luftkvalitetsvarsel for området ditt fra MET.
+            Koordinatene rundes av før oppslaget, lagres ikke, kobles ikke til
+            deg, og deles ikke videre. Sier du nei, fungerer resten av siden som
+            normalt.
           </p>
 
           <h2>Informasjonskapsler (cookies)</h2>

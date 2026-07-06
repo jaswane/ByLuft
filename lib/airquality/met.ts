@@ -11,10 +11,10 @@ const REVALIDATE_SECONDS = 1800; // 30 min
 
 export const MET_SOURCE_LABEL = "MET Norway – Luftkvalitetsvarsel";
 
-function buildUrl(city: City): string {
+function buildUrl(lat: number, lon: number): string {
   const params = new URLSearchParams({
-    lat: city.lat.toFixed(4),
-    lon: city.lon.toFixed(4),
+    lat: lat.toFixed(4),
+    lon: lon.toFixed(4),
     areaclass: "grunnkrets",
   });
   return `${MET_BASE}?${params.toString()}`;
@@ -37,19 +37,25 @@ function isRetryableStatus(status: number): boolean {
 }
 
 /**
- * Henter og normaliserer luftkvalitetsvarsel for en by fra MET Norway.
+ * Henter og normaliserer luftkvalitetsvarsel for et koordinat fra MET Norway.
  * Kaster aldri – returnerer alltid et AirQualityResult, med ok=false ved feil.
  * Kjøres kun på server (bruker identifiserende User-Agent mot MET).
  *
- * Robusthet: når 20 bysider genereres samtidig under build/ISR kan enkeltkall
- * feile transient (nettverk, timeout, throttling). Ett retry med kort pause
- * reduserer risikoen for at en byside bygges med fallback uten grunn. Ved
- * varig feil beholdes den ærlige fallbacken – vi viser aldri gjettede tall.
+ * Brukes både av bysidene (via getAirQualityForCity) og av
+ * «Min lokasjon»-verktøyet (via route handler), slik at normalisering og
+ * AQI-tolkning bare finnes ett sted.
+ *
+ * Robusthet: når mange bysider genereres samtidig under build/ISR kan
+ * enkeltkall feile transient (nettverk, timeout, throttling). Ett retry med
+ * kort pause reduserer risikoen for at en side bygges med fallback uten
+ * grunn. Ved varig feil beholdes den ærlige fallbacken – vi viser aldri
+ * gjettede tall.
  */
-export async function getAirQualityForCity(
-  city: City,
+export async function getAirQualityForCoords(
+  lat: number,
+  lon: number,
 ): Promise<AirQualityResult> {
-  const url = buildUrl(city);
+  const url = buildUrl(lat, lon);
   const fallback: AirQualityResult = {
     ok: false,
     overallAqi: null,
@@ -57,6 +63,7 @@ export async function getAirQualityForCity(
     time: null,
     reftime: null,
     locationName: null,
+    locationPath: null,
     components: [],
     source: MET_SOURCE_LABEL,
   };
@@ -95,4 +102,11 @@ export async function getAirQualityForCity(
   }
 
   return { ...fallback, error: lastError };
+}
+
+/** Henter luftkvalitetsvarsel for en by fra den interne bydatabasen. */
+export async function getAirQualityForCity(
+  city: City,
+): Promise<AirQualityResult> {
+  return getAirQualityForCoords(city.lat, city.lon);
 }

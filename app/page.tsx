@@ -2,17 +2,18 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { CitySearch } from "@/components/CitySearch";
+import { LocationAirQuality } from "@/components/LocationAirQuality";
 import { SourceBox } from "@/components/SourceBox";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
-import { citiesAlphabetical, featuredCities } from "@/data/cities";
+import { cities, citiesAlphabetical, featuredCities } from "@/data/cities";
 import { pollutantList } from "@/data/pollutants";
 import { pageMetadata, faqJsonLd, type FaqItem } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Luftkvalitet i norske byer",
   description:
-    "Se hvordan lufta er i norske byer i dag, forklart enkelt. ByLuft.no bygger på offentlige kilder og forklarer svevestøv, NO₂ og ozon – og hva du bør gjøre.",
+    "Se hvordan lufta er i norske byer i dag – eller der du er. ByLuft.no bygger på offentlige kilder og forklarer svevestøv, NO₂ og ozon, og hva du bør gjøre.",
   path: "/",
 });
 
@@ -62,6 +63,9 @@ export default function HomePage() {
           </div>
           <div className="mt-8 max-w-2xl">
             <CitySearch cities={citiesAlphabetical} />
+          </div>
+          <div id="min-lokasjon" className="mt-5 max-w-2xl">
+            <LocationAirQuality />
           </div>
         </Container>
       </section>
@@ -145,7 +149,7 @@ export default function HomePage() {
           </h3>
           <ul className="mt-3 flex flex-wrap gap-2">
             {citiesAlphabetical
-              .filter((c) => !c.featured)
+              .filter((c) => c.popular && !c.featured)
               .map((c) => (
                 <li key={c.slug}>
                   <Link
@@ -157,6 +161,14 @@ export default function HomePage() {
                 </li>
               ))}
           </ul>
+          <p className="mt-5 text-sm">
+            <Link
+              href="/byer"
+              className="font-medium text-accent hover:text-accent-hover"
+            >
+              Se alle {cities.length} steder →
+            </Link>
+          </p>
         </section>
       </Container>
 

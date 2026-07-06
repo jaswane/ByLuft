@@ -8,7 +8,7 @@ import { HealthAdvice } from "@/components/HealthAdvice";
 import { SourceBox } from "@/components/SourceBox";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
-import { cities, citySlugs, getCity } from "@/data/cities";
+import { cities, getCity, popularCities } from "@/data/cities";
 import { getAirQualityForCity } from "@/lib/airquality/met";
 import { formatDateTime } from "@/lib/format";
 import {
@@ -21,8 +21,13 @@ import {
 // Forny sidene periodisk (ISR). MET oppdaterer time for time.
 export const revalidate = 1800;
 
+/**
+ * Kun de populære stedene forhåndsgenereres ved build. Å bygge alle 78
+ * samtidig ville slått MET-API-et unødig hardt; resten genereres ved første
+ * besøk og caches deretter via ISR på lik linje.
+ */
 export function generateStaticParams() {
-  return citySlugs.map((slug) => ({ slug }));
+  return popularCities.map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({
@@ -173,7 +178,15 @@ export default async function CityPage({
                   href="/byer"
                   className="font-medium text-accent hover:text-accent-hover"
                 >
-                  Se alle byer →
+                  Se alle steder →
+                </Link>
+              </p>
+              <p className="mt-1 text-sm">
+                <Link
+                  href="/byer#min-lokasjon"
+                  className="font-medium text-accent hover:text-accent-hover"
+                >
+                  Eller bruk min lokasjon →
                 </Link>
               </p>
             </section>

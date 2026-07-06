@@ -14,18 +14,14 @@ export const site = {
   lang: "no",
   publisher: "Swane Creative",
   publisherUrl: "https://swanecreative.no",
-  /**
-   * Kontaktadresse som vises på /om og /personvern og brukes i User-Agent
-   * mot MET. NB: Postkassen post@byluft.no må opprettes/videresendes før
-   * lansering – ikke publiser siden uten at adressen faktisk mottar e-post.
-   */
-  contactEmail: "post@byluft.no",
+  /** Kontaktadresse som vises på /om og /personvern og brukes i User-Agent mot MET. */
+  contactEmail: "kontakt@swanecreative.no",
   /**
    * User-Agent som sendes til api.met.no. MET krever en identifiserbar UA med
    * applikasjons-/domenenavn og kontaktinfo, ellers svarer de med 403.
    * Formen følger MET sine eksempler: "App/versjon domene (kontakt)".
    */
-  metUserAgent: "ByLuft/1.0 byluft.no (post@byluft.no)",
+  metUserAgent: "ByLuft/1.0 byluft.no (kontakt@swanecreative.no)",
 } as const;
 
 export function absoluteUrl(path = "/"): string {

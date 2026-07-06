@@ -6,7 +6,7 @@ import type { AirQualityResult, ComponentReading } from "./types";
 export interface MetRawResponse {
   meta?: {
     reftime?: string;
-    location?: { name?: string };
+    location?: { name?: string; path?: string };
   };
   data?: {
     time?: Array<{
@@ -61,6 +61,7 @@ export function normalizeMetResponse(
     time: null,
     reftime: raw?.meta?.reftime ?? null,
     locationName: raw?.meta?.location?.name ?? null,
+    locationPath: raw?.meta?.location?.path ?? null,
     components: [],
     source,
   };
@@ -111,6 +112,7 @@ export function normalizeMetResponse(
     time: entry.from ?? entry.to ?? null,
     reftime: raw?.meta?.reftime ?? null,
     locationName: raw?.meta?.location?.name ?? null,
+    locationPath: raw?.meta?.location?.path ?? null,
     components,
     source,
     error: ok ? undefined : "Fant ingen brukbare verdier i svaret",
