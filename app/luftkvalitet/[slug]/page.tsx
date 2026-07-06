@@ -40,9 +40,11 @@ export async function generateMetadata({
       index: false,
     });
   }
+  const place =
+    city.county === city.name ? city.name : `${city.name} (${city.county})`;
   return pageMetadata({
     title: `Luftkvalitet i ${city.name} i dag`,
-    description: `Dagens beregnede luftkvalitet i ${city.name} (${city.county}): svevestøv, NO₂ og ozon forklart, med helseråd og kilde. Basert på MET Norway.`,
+    description: `Dagens beregnede luftkvalitet i ${place}: svevestøv, NO₂ og ozon forklart, med helseråd og kilde. Basert på MET Norway.`,
     path: `/luftkvalitet/${city.slug}`,
   });
 }

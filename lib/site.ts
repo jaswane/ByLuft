@@ -22,9 +22,10 @@ export const site = {
   contactEmail: "post@byluft.no",
   /**
    * User-Agent som sendes til api.met.no. MET krever en identifiserbar UA med
-   * domene og kontaktinfo, ellers svarer de med 403.
+   * applikasjons-/domenenavn og kontaktinfo, ellers svarer de med 403.
+   * Formen følger MET sine eksempler: "App/versjon domene (kontakt)".
    */
-  metUserAgent: "byluft.no (post@byluft.no)",
+  metUserAgent: "ByLuft/1.0 byluft.no (post@byluft.no)",
 } as const;
 
 export function absoluteUrl(path = "/"): string {
