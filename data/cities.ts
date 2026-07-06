@@ -109,8 +109,8 @@ export const cities: City[] = [
     name: "Bodø",
     municipality: "Bodø",
     county: "Nordland",
-    lat: 67.2804,
-    lon: 14.4049,
+    lat: 67.2827,
+    lon: 14.3836,
     intro:
       "Bodø har et værhardt kystklima som ofte gir god luftutskiftning. Trafikk er den viktigste lokale kilden, og nivåene er vanligvis lave.",
     localSources: ["Veitrafikk", "Veistøv om våren"],
@@ -186,8 +186,8 @@ export const cities: City[] = [
     name: "Hamar",
     municipality: "Hamar",
     county: "Innlandet",
-    lat: 61.1145,
-    lon: 11.0674,
+    lat: 60.7945,
+    lon: 11.068,
     intro:
       "Hamar ved Mjøsa har innlandsklima med kalde vinterdager. Vedfyring og trafikk er de typiske lokale kildene, og veistøv kan bli merkbart om våren.",
     localSources: ["Vedfyring", "Veitrafikk", "Veistøv om våren"],
@@ -219,8 +219,8 @@ export const cities: City[] = [
     name: "Moss",
     municipality: "Moss",
     county: "Østfold",
-    lat: 59.459,
-    lon: 10.7003,
+    lat: 59.4344,
+    lon: 10.6574,
     intro:
       "Moss har både trafikk, ferjehavn og industri i nærområdet. Langtransportert forurensning fra kontinentet kan tidvis bidra til nivåene.",
     localSources: ["Veitrafikk", "Skipstrafikk", "Industri", "Langtransportert forurensning"],

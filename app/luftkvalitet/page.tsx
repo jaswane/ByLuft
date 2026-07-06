@@ -59,7 +59,7 @@ export default function LuftkvalitetGuidePage() {
       <PageHeader
         crumbs={crumbs}
         title="Luftkvalitet i Norge, forklart enkelt"
-        lead="En kort guide til hva luftkvalitet er, hvilke komponenter som måles, hvordan du leser nivåene, og hva forskjellen er på varsel og måling."
+        lead="En kort guide til hva luftkvalitet er, hvilke komponenter som følges med på, hvordan du leser nivåene, og hva forskjellen er på varsel og måling."
       />
 
       <Container className="py-10">

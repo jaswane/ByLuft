@@ -47,6 +47,10 @@ export async function getAirQualityForCity(
         Accept: "application/json",
       },
       next: { revalidate: REVALIDATE_SECONDS },
+      // Ikke la en hengende MET-forespørsel blokkere sidevisningen.
+      // Sidene har uansett ISR (revalidate på side-nivå), så et avbrutt
+      // forsøk gir bare ærlig fallback til neste regenerering.
+      signal: AbortSignal.timeout(8000),
     });
 
     if (!res.ok) {

@@ -49,7 +49,7 @@ export default function HomePage() {
         <Container className="py-14 sm:py-20">
           <div className="max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-wide text-accent">
-              Luftkvalitet i Norge
+              Sjekk luftkvalitet i norske byer
             </p>
             <h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
               Hvordan er lufta i byen din i dag?
@@ -77,7 +77,7 @@ export default function HomePage() {
           </h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-3">
             <div className="rounded-xl border border-border bg-background p-4">
-              <h3 className="font-semibold">Hva måles?</h3>
+              <h3 className="font-semibold">Hva følges med på?</h3>
               <p className="mt-1 text-sm text-muted">
                 Mest svevestøv (PM2.5 og PM10), nitrogendioksid (NO₂) og ozon
                 (O₃). Det er disse som påvirker helsa mest i norske byer.
@@ -150,7 +150,7 @@ export default function HomePage() {
                 <li key={c.slug}>
                   <Link
                     href={`/luftkvalitet/${c.slug}`}
-                    className="inline-block rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium transition-colors hover:border-accent hover:bg-accent-soft hover:text-accent-hover"
+                    className="inline-block rounded-full border border-border bg-surface px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent hover:bg-accent-soft hover:text-accent-hover"
                   >
                     {c.name}
                   </Link>

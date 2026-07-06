@@ -78,7 +78,7 @@ export function SiteFooter() {
               Swane Creative
             </a>
           </p>
-          <p>© {2026} ByLuft.no</p>
+          <p>© {new Date().getFullYear()} ByLuft.no</p>
         </div>
       </Container>
     </footer>
