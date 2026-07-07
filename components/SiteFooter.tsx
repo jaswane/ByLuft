@@ -55,15 +55,6 @@ export function SiteFooter() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <a
-                  href="https://uvindex.no"
-                  rel="noopener"
-                  className="hover:text-accent-hover"
-                >
-                  UV-indeks og solbeskyttelse – UVindex.no
-                </a>
-              </li>
             </ul>
           </nav>
 
@@ -76,7 +67,22 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-border pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 border-t border-border pt-6 text-sm">
+          <h2 className="font-semibold text-foreground">
+            Andre nyttige verktøy
+          </h2>
+          <p className="mt-2 text-muted">
+            <a
+              href="https://uvindex.no"
+              rel="noopener"
+              className="hover:text-accent-hover"
+            >
+              UV-indeks og solbeskyttelse – UVindex.no
+            </a>
+          </p>
+        </div>
+
+        <div className="mt-6 flex flex-col gap-2 border-t border-border pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
             Et prosjekt fra{" "}
             <a
