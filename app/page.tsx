@@ -7,12 +7,7 @@ import { LocationAirQuality } from "@/components/LocationAirQuality";
 import { SourceBox } from "@/components/SourceBox";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
-import {
-  cities,
-  citiesAlphabetical,
-  featuredCities,
-  majorCities,
-} from "@/data/cities";
+import { cities, citiesAlphabetical, majorCities } from "@/data/cities";
 import { pollutantList } from "@/data/pollutants";
 import { pageMetadata, faqJsonLd, type FaqItem } from "@/lib/seo";
 
@@ -70,6 +65,14 @@ export default function HomePage() {
               <div className="mt-8">
                 <CitySearch cities={citiesAlphabetical} suggestions={majorCities} />
               </div>
+              <p className="mt-3 text-sm">
+                <Link
+                  href="/byer"
+                  className="font-medium text-accent hover:text-accent-hover"
+                >
+                  Se alle {cities.length} steder →
+                </Link>
+              </p>
               <div id="min-lokasjon" className="mt-5">
                 <LocationAirQuality />
               </div>
@@ -129,65 +132,6 @@ export default function HomePage() {
               className="font-medium text-accent hover:text-accent-hover"
             >
               Les hele guiden til luftkvalitet →
-            </Link>
-          </p>
-        </section>
-      </Container>
-
-      {/* Prioriterte byer */}
-      <Container className="pb-14">
-        <section aria-labelledby="byer-heading">
-          <div className="flex items-end justify-between gap-4">
-            <h2 id="byer-heading" className="text-2xl font-bold tracking-tight">
-              Populære byer
-            </h2>
-            <Link
-              href="/byer"
-              className="text-sm font-medium text-accent hover:text-accent-hover"
-            >
-              Alle byer →
-            </Link>
-          </div>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredCities.map((c) => (
-              <li key={c.slug}>
-                <Link
-                  href={`/luftkvalitet/${c.slug}`}
-                  className="flex h-full flex-col rounded-xl border border-border bg-surface p-5 transition-colors hover:border-accent hover:bg-accent-soft/40"
-                >
-                  <span className="text-lg font-semibold">{c.name}</span>
-                  <span className="mt-1 text-sm text-muted">{c.county}</span>
-                  <span className="mt-3 text-sm text-accent">
-                    Se luftkvalitet →
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <h3 className="mt-8 text-sm font-semibold text-muted">
-            Flere byer
-          </h3>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {citiesAlphabetical
-              .filter((c) => c.popular && !c.featured)
-              .map((c) => (
-                <li key={c.slug}>
-                  <Link
-                    href={`/luftkvalitet/${c.slug}`}
-                    className="inline-block rounded-full border border-border bg-surface px-4 py-2.5 text-sm font-medium transition-colors hover:border-accent hover:bg-accent-soft hover:text-accent-hover"
-                  >
-                    {c.name}
-                  </Link>
-                </li>
-              ))}
-          </ul>
-          <p className="mt-5 text-sm">
-            <Link
-              href="/byer"
-              className="font-medium text-accent hover:text-accent-hover"
-            >
-              Se alle {cities.length} steder →
             </Link>
           </p>
         </section>
