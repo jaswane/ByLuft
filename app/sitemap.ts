@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/byer",
     "/luftkvalitet",
+    "/kan-jeg-ga-ut",
     "/svevestov",
     "/no2",
     "/ozon",

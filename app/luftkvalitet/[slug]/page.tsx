@@ -45,11 +45,9 @@ export async function generateMetadata({
       index: false,
     });
   }
-  const place =
-    city.county === city.name ? city.name : `${city.name} (${city.county})`;
   return pageMetadata({
     title: `Luftkvalitet i ${city.name} i dag`,
-    description: `Dagens beregnede luftkvalitet i ${place}: svevestøv, NO₂ og ozon forklart, med helseråd og kilde. Basert på MET Norway.`,
+    description: `Luftkvalitet i ${city.name} i dag: beregnet varsel for svevestøv (PM2.5 og PM10), NO₂ og ozon, typiske kilder til luftforurensning, og råd for barn og astma.`,
     path: `/luftkvalitet/${city.slug}`,
   });
 }
@@ -82,6 +80,21 @@ export default async function CityPage({
         `Er data utilgjengelig, sier vi tydelig fra i stedet for å vise gjettede tall.`,
     },
     {
+      question: `Er lufta i ${city.name} trygg å være ute i?`,
+      answer:
+        "Ved nivåene «lite» og «moderat» kan de aller fleste være ute som normalt. Ved «høy» bør barn, eldre, gravide og personer med astma eller hjerte-/karsykdom redusere langvarig, hard aktivitet ute, og ved «svært høy» bør følsomme grupper være mest mulig inne. Se statuskortet øverst for dagens nivå.",
+    },
+    {
+      question: "Hva betyr varselet for barn og personer med astma?",
+      answer:
+        "Barn og personer med astma eller annen lungesykdom er mer følsomme for luftforurensning enn andre. Ved høye nivåer bør de ta det roligere utendørs, holde avstand til sterkt trafikkerte veier og ha eventuelle medisiner tilgjengelig. ByLuft gir generell informasjon, ikke medisinske råd – er du i tvil, kontakt lege eller se Helsenorge.",
+    },
+    {
+      question: "Er dette en måling eller et varsel?",
+      answer:
+        "Et beregnet varsel fra MET Norway, ikke en måling fra en målestasjon. Varselet dekker hele landet og oppdateres gjennom døgnet. Faktiske stasjonsmålinger finnes hos Miljødirektoratets tjeneste Luftkvalitet i Norge.",
+    },
+    {
       question: `Hva er de vanligste kildene til dårlig luft i ${city.name}?`,
       answer: `De mest aktuelle lokale kildene er ${city.localSources
         .join(", ")
@@ -103,7 +116,7 @@ export default async function CityPage({
         <Container className="py-8">
           <Breadcrumbs items={crumbs} />
           <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-            Luftkvalitet i {city.name}
+            Luftkvalitet i {city.name} i dag
           </h1>
           <p className="mt-2 text-muted">
             {city.municipality} kommune · {city.county}
@@ -124,7 +137,9 @@ export default async function CityPage({
                 {city.intro}
               </p>
 
-              <h3 className="mt-6 font-semibold">Typiske lokale kilder</h3>
+              <h3 className="mt-6 font-semibold">
+                Typiske kilder til luftforurensning i {city.name}
+              </h3>
               <ul className="mt-2 flex flex-wrap gap-2">
                 {city.localSources.map((s) => (
                   <li

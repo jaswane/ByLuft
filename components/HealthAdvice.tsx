@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { AqiLevel } from "@/lib/airquality/aqi";
 
 interface AdviceGroup {
@@ -89,6 +90,20 @@ export function HealthAdvice({ level }: { level: AqiLevel | null }) {
           Helsenorge
         </a>
         .
+      </p>
+      <p className="mt-2 text-xs">
+        <Link href="/helse" className="text-accent hover:text-accent-hover">
+          Helse og luftkvalitet
+        </Link>
+        <span aria-hidden="true" className="px-1.5 text-muted">
+          ·
+        </span>
+        <Link
+          href="/kan-jeg-ga-ut"
+          className="text-accent hover:text-accent-hover"
+        >
+          Kan jeg gå ut når lufta er dårlig?
+        </Link>
       </p>
     </section>
   );

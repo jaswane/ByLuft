@@ -150,7 +150,11 @@ export default function HelsePage() {
               </ul>
               <p>
                 Vil du sjekke nivået der du bor?{" "}
-                <Link href="/byer">Finn byen din</Link> og se dagens varsel.
+                <Link href="/byer">Finn byen din</Link> og se dagens varsel. Se
+                også den praktiske guiden{" "}
+                <Link href="/kan-jeg-ga-ut">
+                  kan jeg gå ut når luftkvaliteten er dårlig?
+                </Link>
               </p>
             </Prose>
 

@@ -221,6 +221,11 @@ export default function LuftkvalitetGuidePage() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/kan-jeg-ga-ut" className="text-accent hover:text-accent-hover">
+                    Kan jeg gå ut når lufta er dårlig?
+                  </Link>
+                </li>
+                <li>
                   <Link href="/byer" className="text-accent hover:text-accent-hover">
                     Luftkvalitet i byer
                   </Link>

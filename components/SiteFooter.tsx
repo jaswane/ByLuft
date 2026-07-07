@@ -9,6 +9,7 @@ const footerNav = [
   { href: "/no2", label: "Nitrogendioksid (NO₂)" },
   { href: "/ozon", label: "Bakkenær ozon (O₃)" },
   { href: "/helse", label: "Helse og luftkvalitet" },
+  { href: "/kan-jeg-ga-ut", label: "Kan jeg gå ut når lufta er dårlig?" },
 ];
 
 const aboutNav = [
