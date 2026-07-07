@@ -55,6 +55,15 @@ export function SiteFooter() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <a
+                  href="https://uvindex.no"
+                  rel="noopener"
+                  className="hover:text-accent-hover"
+                >
+                  UV-indeks og solbeskyttelse – UVindex.no
+                </a>
+              </li>
             </ul>
           </nav>
 

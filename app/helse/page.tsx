@@ -159,6 +159,29 @@ export default function HelsePage() {
 
           <aside className="space-y-6">
             <SourceBox sources={healthSources} title="Helsekilder" />
+
+            <section
+              aria-labelledby="uv-tips"
+              className="rounded-xl border border-border bg-surface p-5 text-sm"
+            >
+              <h2 id="uv-tips" className="font-semibold">
+                Relatert: sol og UV
+              </h2>
+              <p className="mt-2 text-muted">
+                Når lufta er god, men sola er sterk, kan UV-indeksen fortsatt
+                være viktig – særlig for barn og andre med sart hud. ByLuft
+                handler om luftkvalitet; for sol og UV, sjekk UV-indeksen der du
+                er på{" "}
+                <a
+                  href="https://uvindex.no"
+                  rel="noopener"
+                  className="font-medium text-accent hover:text-accent-hover"
+                >
+                  UVindex.no
+                </a>
+                .
+              </p>
+            </section>
           </aside>
         </div>
       </Container>
