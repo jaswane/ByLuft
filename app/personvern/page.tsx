@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "Personvern",
   description:
-    "Personvernerklæring for ByLuft.no. Vi krever ingen innlogging, samler ikke inn personopplysninger og bruker ikke sporing på tvers av nettsteder.",
+    "Personvernerklæring for ByLuft.no. Vi krever ingen innlogging og selger ikke data. Vi bruker Google Analytics til anonym trafikkstatistikk.",
   path: "/personvern",
 });
 
@@ -33,8 +33,13 @@ export default function PersonvernPage() {
           <h2>Kort oppsummert</h2>
           <ul>
             <li>Du trenger ikke å logge inn eller registrere deg.</li>
-            <li>Vi ber ikke om, og lagrer ikke, personopplysninger om deg.</li>
-            <li>Vi bruker ikke sporing på tvers av nettsteder eller annonsenettverk.</li>
+            <li>Vi ber deg ikke om personopplysninger som navn eller e-post.</li>
+            <li>
+              Vi bruker Google Analytics til anonym, statistisk trafikkmåling –
+              for å se hvor mange som bruker siden og hvilke sider som er
+              populære.
+            </li>
+            <li>Vi selger ikke data, og vi bruker ikke annonsenettverk.</li>
             <li>Bysøket kjører i nettleseren din og sender ikke søket ditt til oss.</li>
           </ul>
 
@@ -56,18 +61,49 @@ export default function PersonvernPage() {
             normalt.
           </p>
 
+          <h2>Trafikkmåling med Google Analytics</h2>
+          <p>
+            For å forstå hvordan siden brukes, og for å gjøre den bedre, bruker
+            ByLuft.no Google Analytics (GA4). Verktøyet samler inn statistiske,
+            aggregerte opplysninger om besøket – for eksempel hvilke sider som
+            åpnes, omtrentlig geografisk område, nettlesertype og hvor besøket
+            kommer fra. Vi bruker ikke dette til å identifisere deg som person,
+            og vi kobler det ikke til navn eller kontaktinfo.
+          </p>
+          <p>
+            Google Analytics settes opp av Google LLC, som behandler dataene på
+            våre vegne. Du kan lese mer om hvordan Google behandler data i{" "}
+            <a
+              href="https://policies.google.com/privacy"
+              rel="noopener nofollow"
+              target="_blank"
+            >
+              Googles personvernerklæring
+            </a>
+            . Ønsker du å reservere deg, kan du bruke{" "}
+            <a
+              href="https://tools.google.com/dlpage/gaoptout"
+              rel="noopener nofollow"
+              target="_blank"
+            >
+              Googles avmeldingstillegg
+            </a>{" "}
+            eller blokkere sporing i nettleseren din.
+          </p>
+
           <h2>Informasjonskapsler (cookies)</h2>
           <p>
-            ByLuft.no setter ikke informasjonskapsler for markedsføring eller
-            sporing. Skulle vi senere ta i bruk anonym, personvernvennlig
-            besøksstatistikk, vil vi oppdatere denne siden og beskrive det tydelig.
+            Google Analytics setter informasjonskapsler i nettleseren din for å
+            skille besøk fra hverandre og telle dem statistisk. Utover dette
+            setter ByLuft.no ikke informasjonskapsler for markedsføring, og vi
+            deler ikke data med annonsenettverk.
           </p>
 
           <h2>Dine rettigheter</h2>
           <p>
-            Siden vi ikke samler inn personopplysninger, har vi heller ingen
-            opplysninger om deg å utlevere eller slette. Har du spørsmål om
-            personvern, kan du kontakte oss på{" "}
+            Vi ber deg ikke om personopplysninger, og den statistiske
+            trafikkmålingen er ikke knyttet til deg som person. Har du spørsmål
+            om personvern, kan du kontakte oss på{" "}
             <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
           </p>
         </Prose>

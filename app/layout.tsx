@@ -3,6 +3,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { JsonLd } from "@/components/JsonLd";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { websiteJsonLd } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -42,6 +43,7 @@ export default function RootLayout({
           {children}
         </main>
         <SiteFooter />
+        <GoogleAnalytics />
       </body>
     </html>
   );
