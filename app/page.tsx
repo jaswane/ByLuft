@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { CitySearch } from "@/components/CitySearch";
@@ -6,7 +7,12 @@ import { LocationAirQuality } from "@/components/LocationAirQuality";
 import { SourceBox } from "@/components/SourceBox";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
-import { cities, citiesAlphabetical, featuredCities } from "@/data/cities";
+import {
+  cities,
+  citiesAlphabetical,
+  featuredCities,
+  majorCities,
+} from "@/data/cities";
 import { pollutantList } from "@/data/pollutants";
 import { pageMetadata, faqJsonLd, type FaqItem } from "@/lib/seo";
 
@@ -48,24 +54,39 @@ export default function HomePage() {
       {/* Hero + søk */}
       <section className="border-b border-border bg-gradient-to-b from-accent-soft/60 to-background">
         <Container className="py-14 sm:py-20">
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-accent">
-              Sjekk luftkvalitet i norske byer
-            </p>
-            <h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
-              Hvordan er lufta i byen din i dag?
-            </h1>
-            <p className="mt-4 text-lg text-muted">
-              ByLuft.no samler offentlige luftkvalitetsdata for norske byer og
-              forklarer hva tallene betyr – og hva du bør gjøre når lufta er
-              dårlig.
-            </p>
-          </div>
-          <div className="mt-8 max-w-2xl">
-            <CitySearch cities={citiesAlphabetical} />
-          </div>
-          <div id="min-lokasjon" className="mt-5 max-w-2xl">
-            <LocationAirQuality />
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_380px]">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-accent">
+                Sjekk luftkvalitet i norske byer
+              </p>
+              <h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
+                Hvordan er lufta i byen din i dag?
+              </h1>
+              <p className="mt-4 text-lg text-muted">
+                ByLuft.no samler offentlige luftkvalitetsdata for norske byer og
+                forklarer hva tallene betyr – og hva du bør gjøre når lufta er
+                dårlig.
+              </p>
+              <div className="mt-8">
+                <CitySearch cities={citiesAlphabetical} suggestions={majorCities} />
+              </div>
+              <div id="min-lokasjon" className="mt-5">
+                <LocationAirQuality />
+              </div>
+            </div>
+
+            {/* Dekorativ illustrasjon – kun der det er plass. Fast
+                bredde/høyde-forhold reserverer plassen og hindrer layout shift. */}
+            <div aria-hidden="true" className="hidden lg:block">
+              <Image
+                src="/illustrations/byluft-hero-illustration.png"
+                alt=""
+                width={1122}
+                height={1402}
+                sizes="380px"
+                className="h-auto w-full rounded-2xl"
+              />
+            </div>
           </div>
         </Container>
       </section>

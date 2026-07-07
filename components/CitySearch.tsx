@@ -9,12 +9,19 @@ import type { City } from "@/data/cities";
  * selve byinnholdet ligger som statiske, indekserbare sider under /luftkvalitet/[slug].
  * Alle byene er også lenket i ren HTML på /byer for søkemotorer.
  */
-export function CitySearch({ cities }: { cities: City[] }) {
+export function CitySearch({
+  cities,
+  suggestions,
+}: {
+  cities: City[];
+  /** Hurtigvalg som vises når søkefeltet er tomt (f.eks. største byer først). */
+  suggestions?: City[];
+}) {
   const [query, setQuery] = useState("");
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return cities.slice(0, 8);
+    if (!q) return suggestions ?? cities.slice(0, 8);
     return cities
       .filter(
         (c) =>
@@ -23,7 +30,7 @@ export function CitySearch({ cities }: { cities: City[] }) {
           c.county.toLowerCase().includes(q),
       )
       .slice(0, 8);
-  }, [cities, query]);
+  }, [cities, suggestions, query]);
 
   return (
     <div className="w-full">

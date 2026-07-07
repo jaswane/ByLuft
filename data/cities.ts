@@ -926,6 +926,29 @@ export const featuredCities = cities.filter((c) => c.featured);
 /** Populære steder forhåndsgenereres ved build. */
 export const popularCities = cities.filter((c) => c.popular);
 
+/**
+ * De viktigste/største byene i prioritert rekkefølge (ikke alfabetisk).
+ * Brukes til hurtigvalg i heroen på forsiden.
+ */
+const majorCitySlugs = [
+  "oslo",
+  "bergen",
+  "trondheim",
+  "stavanger",
+  "drammen",
+  "kristiansand",
+  "tromso",
+  "bodo",
+  "fredrikstad",
+  "sandnes",
+  "alesund",
+  "tonsberg",
+] as const;
+
+export const majorCities: City[] = majorCitySlugs
+  .map((slug) => getCity(slug))
+  .filter((c): c is City => c !== undefined);
+
 /** Steder sortert alfabetisk på norsk. */
 export const citiesAlphabetical = [...cities].sort((a, b) =>
   a.name.localeCompare(b.name, "nb"),
