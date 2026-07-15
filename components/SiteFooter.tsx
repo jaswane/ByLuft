@@ -10,6 +10,7 @@ const footerNav = [
   { href: "/ozon", label: "Bakkenær ozon (O₃)" },
   { href: "/helse", label: "Helse og luftkvalitet" },
   { href: "/kan-jeg-ga-ut", label: "Kan jeg gå ut når lufta er dårlig?" },
+  { href: "/pollen-og-luftkvalitet", label: "Pollen og luftkvalitet" },
 ];
 
 const aboutNav = [

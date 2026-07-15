@@ -226,6 +226,11 @@ export default function LuftkvalitetGuidePage() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/pollen-og-luftkvalitet" className="text-accent hover:text-accent-hover">
+                    Pollen og luftkvalitet
+                  </Link>
+                </li>
+                <li>
                   <Link href="/byer" className="text-accent hover:text-accent-hover">
                     Luftkvalitet i byer
                   </Link>

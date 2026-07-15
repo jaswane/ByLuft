@@ -156,6 +156,14 @@ export default function HelsePage() {
                   kan jeg gå ut når luftkvaliteten er dårlig?
                 </Link>
               </p>
+              <p>
+                Har du astma eller allergi, kan det være nyttig å vite hvordan{" "}
+                <Link href="/pollen-og-luftkvalitet">
+                  pollen og luftkvalitet
+                </Link>{" "}
+                henger sammen – det er to forskjellige ting som begge kan påvirke
+                luftveiene.
+              </p>
             </Prose>
 
             <Faq items={faq} />

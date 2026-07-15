@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/byer",
     "/luftkvalitet",
     "/kan-jeg-ga-ut",
+    "/pollen-og-luftkvalitet",
     "/svevestov",
     "/no2",
     "/ozon",
