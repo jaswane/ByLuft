@@ -4,12 +4,19 @@ import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AirQualityCard } from "@/components/AirQualityCard";
+import { AirSpotlight } from "@/components/AirSpotlight";
 import { HealthAdvice } from "@/components/HealthAdvice";
 import { SourceBox } from "@/components/SourceBox";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { cities, getCity, popularCities } from "@/data/cities";
+import { airSpotlights } from "@/data/airSpotlights";
 import { getAirQualityForCity } from "@/lib/airquality/met";
+import {
+  buildSpotlightContext,
+  getForcedSpotlightKey,
+  getSpotlightKey,
+} from "@/lib/airquality/spotlight";
 import { formatDateTime } from "@/lib/format";
 import {
   pageMetadata,
@@ -63,6 +70,12 @@ export default async function CityPage({
 
   const result = await getAirQualityForCity(city);
   const updated = formatDateTime(result.reftime);
+
+  // Spotlight: gjenbruker samme result – ingen nye API-kall.
+  const spotlightContext = buildSpotlightContext({ result, city });
+  const spotlightKey =
+    getForcedSpotlightKey() ?? getSpotlightKey(spotlightContext);
+  const spotlight = airSpotlights[spotlightKey];
 
   const crumbs = [
     { name: "Hjem", path: "/" },
@@ -128,6 +141,12 @@ export default async function CityPage({
         <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
           <div className="space-y-8">
             <AirQualityCard city={city} result={result} />
+
+            <AirSpotlight
+              content={spotlight}
+              level={result.overallLevel}
+              placeName={city.name}
+            />
 
             <section aria-labelledby="om-byen" className="max-w-prose">
               <h2 id="om-byen" className="text-xl font-bold tracking-tight">
